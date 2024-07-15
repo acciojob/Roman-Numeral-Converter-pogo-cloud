@@ -16,15 +16,19 @@ function convertToRoman(num) {
     };
 
   //your code here
-	let res="";
-	for(let i=0;i<Object.keys(obj).length;i++){
-		let[numeral,value]=obj[i];
-		while(num>=value){
-			res+=numeral;
-			num-=value;
+	let str="";
+	
+	for(let i in obj){
+		let quo=0;
+		if(num>=obj[i][1]){
+			quo=Math.floor(num/obj[i][1]);
+			num=num-(obj[i][1]*quo);
+		}
+		for(let j=0;j<quo;j++){
+			str+=obj[i][0];
 		}
 	}
-    return res;	
+	return str;	
 	
 
 }
